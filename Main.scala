@@ -34,6 +34,9 @@ object Main extends IOApp.Simple {
           .flatMap {
             case Some(guess) if language.name.equalsIgnoreCase(guess) => IO.println("Congratulations, you guessed correctly!")
 
+            case Some(s) if s.equalsIgnoreCase("java script") =>
+              IO.println("dude what the fuck") *> takeGuesses(remaining)
+
             case Some(notALanguge) if !languages.exists(_.name.equalsIgnoreCase(notALanguge)) =>
               IO.println(s"$notALanguge is not a known language.") *> takeGuesses(remaining)
 
